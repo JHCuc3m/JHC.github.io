@@ -1,7 +1,7 @@
 /* ======== Global Styles & Variables ======== */
 :root {
-    --primary-color: #004a9e; /* A professional blue, like Georgia Tech's blue */
-    --secondary-color: #b3a369; /* A gold accent */
+    --primary-color: #004a9e;
+    --secondary-color: #b3a369;
     --dark-gray: #333;
     --light-gray: #f4f4f4;
     --background-color: #ffffff;
@@ -23,7 +23,7 @@ body {
     line-height: 1.6;
     background-color: var(--background-color);
     color: var(--text-color);
-    padding-top: 70px; /* Offset for fixed header */
+    padding-top: 70px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -119,24 +119,24 @@ nav ul a {
     transition: color 0.3s ease;
 }
 
-/* ======== Hero & About Section ======== */
+/* ======== Hero & About Section (Correct) ======== */
 .hero-about {
     background-color: var(--light-gray);
     border-bottom: 1px solid #ddd;
-    padding: 5rem 2rem; /* More padding */
+    padding: 5rem 2rem;
 }
 
 .hero-container {
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
-    gap: 3rem; /* Space between columns */
-    align-items: flex-start; /* Aligns top of text with top of pic */
+    gap: 3rem;
+    align-items: flex-start;
 }
 
 /* --- Left Column: Pic + Links --- */
 .hero-left {
-    flex: 0 0 200px; /* Fixed width for the column */
+    flex: 0 0 200px;
     display: flex;
     flex-direction: column;
 }
@@ -150,7 +150,6 @@ nav ul a {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Style for links *under* the pic */
 .hero-left .social-links {
     display: flex;
     flex-direction: column;
@@ -162,7 +161,6 @@ nav ul a {
     font-weight: 600;
     font-size: 1rem;
     color: var(--primary-color);
-    /* Remove button styles */
     border: none;
     padding: 0;
     transition: color 0.3s ease;
@@ -170,13 +168,13 @@ nav ul a {
 
 .hero-left .social-links a:hover {
     color: var(--secondary-color);
-    background: none; /* Override button hover */
+    background: none;
     text-decoration: underline;
 }
 
 /* --- Right Column: Text --- */
 .hero-right {
-    flex: 1; /* Takes up the rest of the space */
+    flex: 1;
 }
 
 .hero-right h1 {
@@ -199,7 +197,72 @@ nav ul a {
     margin-top: 2rem;
 }
 
-/* ======== Cards (for Experience, Research, etc.) ======== */
+/* --- ADD THIS SECTION (Timeline Styles) --- */
+/* ======== Timeline Section ======== */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* The vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100px;
+    height: 100%;
+    width: 3px;
+    background: var(--light-gray);
+}
+
+.timeline li {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 140px; /* Space for date and dot */
+    min-height: 50px;
+}
+
+/* The dot on the timeline */
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: 92px; /* (100px - 15px/2) + 1px adjustment */
+    top: 5px;
+    height: 15px;
+    width: 15px;
+    background: var(--secondary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline .timeline-date {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 80px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.timeline .timeline-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline .timeline-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+/* --- END OF SECTION TO ADD --- */
+
+
+/* ======== Cards (for Education) ======== */
 .card {
     background: #fff;
     border: 1px solid #e0e0e0;
@@ -271,14 +334,22 @@ footer p {
 }
 
 footer .social-links a {
+    /* These styles are for the footer links, if you add them */
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 5px;
+    transition: all 0.3s ease;
     color: var(--background-color);
-    border-color: var(--light-gray);
 }
 
 footer .social-links a:hover {
     background: var(--secondary-color);
     border-color: var(--secondary-color);
     color: var(--dark-gray);
+    text-decoration: none;
 }
 
 footer .copyright {
@@ -291,7 +362,7 @@ footer .copyright {
 /* ======== Responsive Design ======== */
 @media (max-width: 768px) {
     h1 { font-size: 2.8rem; }
-    .hero .subtitle { font-size: 1.2rem; }
+    /* Removed .hero .subtitle as .hero doesn't exist */
     
     /* Simple responsive nav: stack items */
     nav {
@@ -318,41 +389,53 @@ footer .copyright {
         padding-top: 120px; /* Adjust for taller stacked nav */
     }
 
-    .hero {
-        min-height: calc(100vh - 120px);
-    }
-    /* Add this inside your existing @media (max-width: 768px) rule */
+    /* Removed .hero min-height as .hero doesn't exist */
 
+    /* Correct responsive styles for new hero */
     .hero-about {
-        padding-top: 3rem; /* Less padding on mobile */
+        padding-top: 3rem;
     }
 
     .hero-container {
-        flex-direction: column; /* Stack columns on mobile */
-        align-items: center; /* Center the content */
+        flex-direction: column;
+        align-items: center;
         gap: 2rem;
     }
 
     .hero-left {
-        flex-basis: auto; /* Reset flex-basis */
-        align-items: center; /* Center the pic and links */
+        flex-basis: auto;
+        align-items: center;
     }
 
     .hero-left .social-links {
-        align-items: center; /* Center the links text */
+        align-items: center;
     }
 
     .hero-right {
-        text-align: center; /* Center the text */
+        text-align: center;
     }
+
+    /* --- ADD THIS SECTION (Timeline Responsive) --- */
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline li {
+        padding-left: 60px; /* Less space */
+    }
+
+    .timeline li::before {
+        left: 12px;
+    }
+
+    .timeline .timeline-date {
+        position: static;
+        width: auto;
+        text-align: left;
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    /* --- END OF SECTION TO ADD --- */
 }
 
-.hero .profile-pic {
-    width: 50;           /* Sets the width */
-    height: 50;          /* Sets the height */
-    border-radius: 50%;     /* This makes the image round */
-    object-fit: cover;      /* Prevents the image from being stretched */
-    margin-bottom: 1.5rem;
-    border: 4px solid var(--primary-color); /* Adds a colored border */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  /* Adds a subtle shadow */
-}
