@@ -142,8 +142,8 @@ nav ul a {
 }
 
 .hero-left .profile-pic {
-    width: 150px;           /* <--- CHANGED */
-    height: 150px;          /* <--- CHANGED */
+    width: 200;           /* <--- CHANGED */
+    height: 200px;          /* <--- CHANGED */
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--primary-color);
