@@ -281,3 +281,13 @@ footer .copyright {
         min-height: calc(100vh - 120px);
     }
 }
+
+.hero .profile-pic {
+    width: 150px;           /* Sets the width */
+    height: 150px;          /* Sets the height */
+    border-radius: 50%;     /* This makes the image round */
+    object-fit: cover;      /* Prevents the image from being stretched */
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--primary-color); /* Adds a colored border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  /* Adds a subtle shadow */
+}
