@@ -119,43 +119,84 @@ nav ul a {
     transition: color 0.3s ease;
 }
 
-/* ======== Hero Section ======== */
-.hero {
-    min-height: calc(100vh - 70px); /* Full viewport height minus header */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* ======== Hero & About Section ======== */
+.hero-about {
     background-color: var(--light-gray);
     border-bottom: 1px solid #ddd;
+    padding: 5rem 2rem; /* More padding */
 }
 
-.hero h1 {
-    font-size: 3.5rem;
+.hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem; /* Space between columns */
+    align-items: flex-start; /* Aligns top of text with top of pic */
+}
+
+/* --- Left Column: Pic + Links --- */
+.hero-left {
+    flex: 0 0 200px; /* Fixed width for the column */
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-left .profile-pic {
+    width: 200px;           
+    height: 200px;          
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Style for links *under* the pic */
+.hero-left .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.hero-left .social-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-color);
+    /* Remove button styles */
+    border: none;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.hero-left .social-links a:hover {
+    color: var(--secondary-color);
+    background: none; /* Override button hover */
+    text-decoration: underline;
+}
+
+/* --- Right Column: Text --- */
+.hero-right {
+    flex: 1; /* Takes up the rest of the space */
+}
+
+.hero-right h1 {
+    font-size: 3rem;
     margin-bottom: 0.5rem;
 }
 
-.hero .subtitle {
-    font-size: 1.5rem;
+.hero-right .subtitle {
+    font-size: 1.3rem;
     color: var(--text-color);
     margin-bottom: 1.5rem;
 }
 
-.social-links a {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 1rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    transition: all 0.3s ease;
+.hero-right .about-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
 }
 
-.social-links a:hover {
-    background: var(--primary-color);
-    color: var(--background-color);
-    text-decoration: none;
+.hero-right h3 {
+    margin-top: 2rem;
 }
 
 /* ======== Cards (for Experience, Research, etc.) ======== */
@@ -279,6 +320,30 @@ footer .copyright {
 
     .hero {
         min-height: calc(100vh - 120px);
+    }
+    /* Add this inside your existing @media (max-width: 768px) rule */
+
+    .hero-about {
+        padding-top: 3rem; /* Less padding on mobile */
+    }
+
+    .hero-container {
+        flex-direction: column; /* Stack columns on mobile */
+        align-items: center; /* Center the content */
+        gap: 2rem;
+    }
+
+    .hero-left {
+        flex-basis: auto; /* Reset flex-basis */
+        align-items: center; /* Center the pic and links */
+    }
+
+    .hero-left .social-links {
+        align-items: center; /* Center the links text */
+    }
+
+    .hero-right {
+        text-align: center; /* Center the text */
     }
 }
 
